@@ -1,62 +1,56 @@
-
 import streamlit as st
 import pickle
 
+# ✅ Load the trained model
+with open("sentiment_model.pkl", "rb") as model_file:
+    sentiment_model = pickle.load(model_file)
 
-# 🎨 Custom CSS for UI
+# ✅ Load the TF-IDF vectorizer
+with open("tfidf_vectorizer.pkl", "rb") as vec_file:
+    tfidf_vectorizer = pickle.load(vec_file)
+
+# ✅ Page styling
+st.set_page_config(page_title="Sentiment Analyzer", layout="centered")
+
 st.markdown(
     """
     <style>
-    div.stTextArea > div > textarea {
-        font-size: 16px;
-        padding: 12px;
-        border: 2px solid #4CAF50;
-        border-radius: 10px;
-        background-color: #f9f9f9;
+    textarea {
+        font-size: 16px !important;
     }
     div.stButton > button {
         background-color: #4CAF50;
         color: white;
         font-size: 18px;
-        border: none;
         padding: 10px 24px;
         border-radius: 8px;
-        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-        transition: background-color 0.3s ease;
+        border: none;
+        transition: 0.3s;
     }
     div.stButton > button:hover {
-        background-color:rgba(69, 80, 160, 0.34);
+        background-color: #3e8e41;
     }
     </style>
     """,
     unsafe_allow_html=True
 )
 
-# ✅ Load the sentiment model
-with open('sentiment_model.pkl', 'rb') as f:
-    sentiment_model = pickle.load(f)
-
-# ✅ Load the TF-IDF vectorizer
-with open('tfidf_vectorizer.pkl', 'rb') as f:
-    tfidf_vectorizer = pickle.load(f)
-
-# 🧾 App Title and Description
-st.title("🛍️ Ecommerce Customer Reviews Sentiment Analysis App")
-
+# ✅ App title and description
+st.title("🛍️ Ecommerce Customer Reviews Sentiment Analysis")
 st.write("""
-Welcome to our Ecommerce Customer Reviews Analysis App.  
-This simple tool analyzes customer reviews and predicts whether they are **positive** or **negative**.
+Enter a customer review below to determine whether it's **positive** or **negative** using a trained machine learning model.
 """)
 
-# 📝 User Input
-user_input = st.text_area("📝 Enter a customer review below:", height=100)
+# ✅ Text input
+user_input = st.text_area("✍️ Paste a customer review here:", height=150)
 
-# 🔍 Predict Button
-if st.button("Predict"):
-    if user_input.strip() == "":
-        st.warning("Please enter some text.")
+# ✅ Predict button
+if st.button("🔍 Predict"):
+    if not user_input.strip():
+        st.warning("Please enter a review to analyze.")
     else:
-        input_features = tfidf_vectorizer.transform([user_input])
-        prediction = sentiment_model.predict(input_features)[0]
-        sentiment = "Positive 😊" if prediction == 1 else "Negative 😠"
+        input_vector = tfidf_vectorizer.transform([user_input])
+        prediction = sentiment_model.predict(input_vector)[0]
+        sentiment = "✅ Positive 😊" if prediction == 1 else "⚠️ Negative 😠"
         st.success(f"Predicted Sentiment: **{sentiment}**")
+
