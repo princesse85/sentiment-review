@@ -1,6 +1,7 @@
 
 import streamlit as st
 import pickle
+pip show scikit-learn
 
 # 🎨 Custom CSS for UI
 st.markdown(
