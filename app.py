@@ -1,7 +1,7 @@
 
 import streamlit as st
 import pickle
-import sklearn
+#import sklearn
 st.write("✅ scikit-learn version:", sklearn.__version__)
 
 
