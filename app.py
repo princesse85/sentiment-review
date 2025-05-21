@@ -41,7 +41,7 @@ st.markdown(
 
 # Load the vectorizer
 #with open('tfidf_vectorizer.pkl', 'rb') as f:
-    tfidf_vectorizer = pickle.load(f)
+   # tfidf_vectorizer = pickle.load(f)
 
 ## App Layout and Title
 st.title("  Ecommerce Customer Reviews Sentiment Analysis App  ")
