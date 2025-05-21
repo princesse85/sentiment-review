@@ -36,11 +36,11 @@ st.markdown(
 # Load the model
 #with open('sentiment_model.pkl', 'rb') as f:
    # sentiment_model = pickle.load(f)
-with open("sentiment_model.pkl", "rb") as f:
+#with open("sentiment_model.pkl", "rb") as f:
    # model = pickle.load(f)
 
 # Load the vectorizer
-with open('tfidf_vectorizer.pkl', 'rb') as f:
+#with open('tfidf_vectorizer.pkl', 'rb') as f:
     tfidf_vectorizer = pickle.load(f)
 
 ## App Layout and Title
