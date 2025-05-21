@@ -1,8 +1,6 @@
 
 import streamlit as st
 import pickle
-#import sklearn
-st.write("✅ scikit-learn version:", sklearn.__version__)
 
 
 # 🎨 Custom CSS for UI
