@@ -1,9 +1,12 @@
 import streamlit as st
-import pickle
+#import pickle
+Import Joblib 
 
 # ✅ Load the trained model
-with open("sentiment_model.pkl", "rb") as model_file:
-    sentiment_model = pickle.load(model_file)
+from Joblib import load
+sentiment_model = load(model_file)
+#with open("sentiment_model.pkl", "rb") as model_file:
+    #sentiment_model = pickle.load(model_file)
 
 # ✅ Load the TF-IDF vectorizer
 with open("tfidf_vectorizer.pkl", "rb") as vec_file:
