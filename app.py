@@ -1,5 +1,5 @@
 import streamlit as st
-import pickle
+#import pickle
 
 # ✅ Load the trained model
 with open("sentiment_model.pkl", "rb") as model_file:
