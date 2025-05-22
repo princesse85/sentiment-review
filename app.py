@@ -3,7 +3,7 @@ import pickle
 
 # ✅ Load the trained model
 with open("sentiment_model.pkl", "rb") as model_file:
-   # sentiment_model = pickle.load(model_file)
+    sentiment_model = pickle.load(model_file)
 
 # ✅ Load the TF-IDF vectorizer
 with open("tfidf_vectorizer.pkl", "rb") as vec_file:
