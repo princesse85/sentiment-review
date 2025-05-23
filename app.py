@@ -1,9 +1,9 @@
 import streamlit as st
 #import pickle
-import Joblib 
+import joblib 
 
 # ✅ Load the trained model
-from Joblib import load
+from joblib import load
 sentiment_model = load(model_file)
 #with open("sentiment_model.pkl", "rb") as model_file:
     #sentiment_model = pickle.load(model_file)
